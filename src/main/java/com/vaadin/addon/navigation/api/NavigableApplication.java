@@ -1,5 +1,6 @@
 package com.vaadin.addon.navigation.api;
 
+import com.vaadin.addon.navigation.place.Place;
 import com.vaadin.ui.Window;
 
 /**
@@ -19,5 +20,7 @@ public interface NavigableApplication {
      * @return New window.
      */
     public Window createNewWindow();
+
+    public void goTo(Place place);
 
 }

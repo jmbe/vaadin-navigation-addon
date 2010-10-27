@@ -14,6 +14,7 @@ import com.vaadin.addon.navigation.activity.stoppable.DefaultConfirmationDialogF
 import com.vaadin.addon.navigation.activity.stoppable.NavigationConfirmationDialog;
 import com.vaadin.addon.navigation.activity.stoppable.NavigationConfirmationDialogFactory;
 import com.vaadin.addon.navigation.api.LocationHash;
+import com.vaadin.addon.navigation.api.NavigableApplication;
 import com.vaadin.addon.navigation.api.PlaceController;
 import com.vaadin.addon.navigation.api.PlaceHistoryMapper;
 import com.vaadin.addon.navigation.api.StoppableActivity;
@@ -80,8 +81,16 @@ public class ActivityManager extends CustomComponent implements FragmentChangedL
         this.activityMapper = activityMapper;
     }
 
+    public ActivityMapper getActivityMapper() {
+        return activityMapper;
+    }
+
     public void setPlaceHistoryMapper(final PlaceHistoryMapper placeHistoryMapper) {
         this.placeHistoryMapper = placeHistoryMapper;
+    }
+
+    public PlaceHistoryMapper getPlaceHistoryMapper() {
+        return placeHistoryMapper;
     }
 
     public void setConfirmationDialogFactory(final NavigationConfirmationDialogFactory confirmationDialogFactory) {
@@ -90,7 +99,7 @@ public class ActivityManager extends CustomComponent implements FragmentChangedL
 
     public void fragmentChanged(final FragmentChangedEvent source) {
         String fragment = uriFragmentUtil.getFragment();
-        log.info("Fragment changed to {}", fragment);
+        log.debug("Fragment changed to {}", fragment);
 
         LocationHash newFragment = new LocationHash(fragment);
 
@@ -124,7 +133,7 @@ public class ActivityManager extends CustomComponent implements FragmentChangedL
     }
 
     private <P extends Place> void goTo(final P place, final boolean setFragment) {
-        final Activity newactivity = activityMapper.get(place, getApplication());
+        final Activity newactivity = activityMapper.get(place, (NavigableApplication) getApplication());
 
         LocationHash newLocation = this.placeHistoryMapper.toUriFragment(place);
         String newfragment = newLocation.getHash();
@@ -220,7 +229,7 @@ public class ActivityManager extends CustomComponent implements FragmentChangedL
     }
 
     public void setDefaultPlace(final Place defaultPlace) {
-        Activity activity = activityMapper.get(defaultPlace, getApplication());
+        Activity activity = activityMapper.get(defaultPlace, (NavigableApplication) getApplication());
 
         if (activity == null) {
             throw new IllegalArgumentException("Cannot find activity for place " + defaultPlace

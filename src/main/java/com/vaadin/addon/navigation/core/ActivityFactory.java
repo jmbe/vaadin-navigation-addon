@@ -6,10 +6,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Maps;
-import com.vaadin.Application;
 import com.vaadin.addon.navigation.activity.Activity;
 import com.vaadin.addon.navigation.activity.ActivityMapper;
 import com.vaadin.addon.navigation.activity.ActivityNotFoundException;
+import com.vaadin.addon.navigation.api.NavigableApplication;
 import com.vaadin.addon.navigation.place.Place;
 
 public class ActivityFactory implements ActivityMapper {
@@ -24,7 +24,7 @@ public class ActivityFactory implements ActivityMapper {
     }
 
     @Override
-    public Activity get(final Place place, final Application application) {
+    public Activity get(final Place place, final NavigableApplication application) {
         log.debug("Creating activity for place {}", place);
         Class<? extends Activity> newActivityClass = getActivityClass(place);
 

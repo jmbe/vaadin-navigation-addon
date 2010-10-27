@@ -1,11 +1,11 @@
 package com.vaadin.addon.navigation.activity;
 
-import com.vaadin.Application;
+import com.vaadin.addon.navigation.api.NavigableApplication;
 import com.vaadin.addon.navigation.place.Place;
 
 public interface ActivityMapper {
 
-    Activity get(Place place, Application application);
+    Activity get(Place place, NavigableApplication application);
 
     /**
      * Register a place to activity mapping.
