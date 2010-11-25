@@ -14,7 +14,7 @@ import com.vaadin.addon.navigation.activity.stoppable.DefaultConfirmationDialogF
 import com.vaadin.addon.navigation.activity.stoppable.NavigationConfirmationDialog;
 import com.vaadin.addon.navigation.activity.stoppable.NavigationConfirmationDialogFactory;
 import com.vaadin.addon.navigation.api.LocationHash;
-import com.vaadin.addon.navigation.api.NavigableApplication;
+import com.vaadin.addon.navigation.api.NavigableWindow;
 import com.vaadin.addon.navigation.api.PlaceController;
 import com.vaadin.addon.navigation.api.PlaceHistoryMapper;
 import com.vaadin.addon.navigation.api.StoppableActivity;
@@ -59,10 +59,14 @@ public class ActivityManager extends CustomComponent implements FragmentChangedL
     private LocationHash currentLocation;
 
     public ActivityManager() {
-        this(new ActivityFactory(), new AnnotatedPlaceHistoryMapper());
+        this(new AnnotatedPlaceHistoryMapper(), new ActivityFactory());
     }
 
-    public ActivityManager(final ActivityMapper activityMapper, final PlaceHistoryMapper placeHistoryMapper) {
+    public ActivityManager(final PlaceHistoryMapper placeHistoryMapper) {
+        this(placeHistoryMapper, new ActivityFactory());
+    }
+
+    public ActivityManager(final PlaceHistoryMapper placeHistoryMapper, final ActivityMapper activityMapper) {
         layout.setSizeFull();
         setSizeFull();
         layout.addComponent(uriFragmentUtil);
@@ -70,8 +74,8 @@ public class ActivityManager extends CustomComponent implements FragmentChangedL
 
         uriFragmentUtil.addListener(this);
 
-        this.activityMapper = activityMapper;
         this.placeHistoryMapper = placeHistoryMapper;
+        this.activityMapper = activityMapper;
 
         this.confirmationDialogFactory = new DefaultConfirmationDialogFactory();
 
@@ -123,7 +127,9 @@ public class ActivityManager extends CustomComponent implements FragmentChangedL
 
         } else {
             /* Invalid fragment. Return to old location. */
-            uriFragmentUtil.setFragment(currentLocation.getHash(), false);
+            if (currentLocation != null) {
+                uriFragmentUtil.setFragment(currentLocation.getHash(), false);
+            }
         }
 
     }
@@ -133,7 +139,7 @@ public class ActivityManager extends CustomComponent implements FragmentChangedL
     }
 
     private <P extends Place> void goTo(final P place, final boolean setFragment) {
-        final Activity newactivity = activityMapper.get(place, (NavigableApplication) getApplication());
+        final Activity newactivity = activityMapper.get(place, (NavigableWindow) getWindow());
 
         LocationHash newLocation = this.placeHistoryMapper.toUriFragment(place);
         String newfragment = newLocation.getHash();
@@ -225,11 +231,15 @@ public class ActivityManager extends CustomComponent implements FragmentChangedL
     }
 
     private Place getDefaultPlace() {
+        if (this.defaultPlace == null) {
+            throw new IllegalStateException("No default place has been set");
+        }
+
         return this.defaultPlace;
     }
 
     public void setDefaultPlace(final Place defaultPlace) {
-        Activity activity = activityMapper.get(defaultPlace, (NavigableApplication) getApplication());
+        Activity activity = activityMapper.get(defaultPlace, (NavigableWindow) getWindow());
 
         if (activity == null) {
             throw new IllegalArgumentException("Cannot find activity for place " + defaultPlace
@@ -238,9 +248,9 @@ public class ActivityManager extends CustomComponent implements FragmentChangedL
 
         this.defaultPlace = defaultPlace;
 
-        if (currentActivity == null) {
-            goTo(defaultPlace);
-        }
+        // if (currentActivity == null) {
+        // goTo(defaultPlace);
+        // }
     }
 
     public void register(final Class<? extends Place> place, final Class<? extends Activity> activity) {

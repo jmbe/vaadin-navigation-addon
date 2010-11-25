@@ -9,7 +9,7 @@ import com.google.common.collect.Maps;
 import com.vaadin.addon.navigation.activity.Activity;
 import com.vaadin.addon.navigation.activity.ActivityMapper;
 import com.vaadin.addon.navigation.activity.ActivityNotFoundException;
-import com.vaadin.addon.navigation.api.NavigableApplication;
+import com.vaadin.addon.navigation.api.NavigableWindow;
 import com.vaadin.addon.navigation.place.Place;
 
 public class ActivityFactory implements ActivityMapper {
@@ -24,7 +24,7 @@ public class ActivityFactory implements ActivityMapper {
     }
 
     @Override
-    public Activity get(final Place place, final NavigableApplication application) {
+    public Activity get(final Place place, final NavigableWindow navigable) {
         log.debug("Creating activity for place {}", place);
         Class<? extends Activity> newActivityClass = getActivityClass(place);
 
@@ -35,7 +35,7 @@ public class ActivityFactory implements ActivityMapper {
 
         try {
             Activity activity = newActivityClass.newInstance();
-            activity.init(application);
+            activity.init(navigable);
             return activity;
         } catch (InstantiationException e) {
             throw new RuntimeException("Could not instantiate activity for place " + place, e);

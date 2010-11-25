@@ -2,6 +2,12 @@ package com.vaadin.addon.navigation.api;
 
 import com.vaadin.addon.navigation.place.Place;
 
+/**
+ * Maps Place to LocationHash and vice versa.
+ * 
+ * Place and LocationHash are value objects, so it is usually safe to share a single PlaceHistoryMapper in multiple
+ * windows.
+ */
 public interface PlaceHistoryMapper {
 
     Place getPlace(LocationHash hash);

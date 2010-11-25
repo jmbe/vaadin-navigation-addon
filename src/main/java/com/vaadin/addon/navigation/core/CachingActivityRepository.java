@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Maps;
 import com.vaadin.addon.navigation.activity.Activity;
-import com.vaadin.addon.navigation.api.NavigableApplication;
+import com.vaadin.addon.navigation.api.NavigableWindow;
 import com.vaadin.addon.navigation.place.Place;
 
 /**
@@ -26,7 +26,7 @@ public class CachingActivityRepository extends ActivityFactory {
     }
 
     @Override
-    public Activity get(final Place place, final NavigableApplication application) {
+    public Activity get(final Place place, final NavigableWindow application) {
         log.debug("Looking up activity for place {}", place);
 
         Class<? extends Activity> activityClass = getActivityClass(place);
