@@ -2,7 +2,6 @@ package com.vaadin.addon.navigation.windows;
 
 import com.vaadin.Application;
 import com.vaadin.addon.navigation.api.NavigableApplication;
-import com.vaadin.terminal.ExternalResource;
 import com.vaadin.ui.Window;
 
 /**
@@ -43,7 +42,9 @@ public class MultipleWindowsSupport {
         Window w = application.createNewWindow();
         w.setName(name);
         ((Application) application).addWindow(w);
-        w.open(new ExternalResource(w.getURL()));
+
+        /* Disable for now. Causes weird problem such as downloading the UIDL file. */
+        // w.open(new ExternalResource(w.getURL()));
         return w;
     }
 }
