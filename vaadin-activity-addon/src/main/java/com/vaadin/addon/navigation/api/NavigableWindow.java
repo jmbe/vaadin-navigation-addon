@@ -1,15 +1,15 @@
 package com.vaadin.addon.navigation.api;
 
-import java.util.Iterator;
-
 import com.vaadin.addon.navigation.core.ActivityManager;
 import com.vaadin.addon.navigation.place.Place;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.Window;
 
-import edu.umd.cs.findbugs.annotations.NonNull;
-import edu.umd.cs.findbugs.annotations.Nullable;
+import java.util.Iterator;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class NavigableWindow extends Window {
 
@@ -63,7 +63,7 @@ public class NavigableWindow extends Window {
         return null;
     }
 
-    @NonNull
+    @Nonnull
     private ActivityManager getActivityManager() {
 
         this.activityManager = findActivityManager(getContent());
