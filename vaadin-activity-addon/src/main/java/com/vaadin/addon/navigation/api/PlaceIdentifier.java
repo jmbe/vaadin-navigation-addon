@@ -1,7 +1,7 @@
 package com.vaadin.addon.navigation.api;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Represents the place name part of a hash in an URI. Does not include state.
