@@ -4,8 +4,7 @@
     <parent>
         <artifactId>internetapplications-parent</artifactId>
         <groupId>se.internetapplications</groupId>
-        <version>2.0.1-SNAPSHOT</version>
-        <relativePath>../internetapplications-parent/pom.xml</relativePath>
+        <version>2.0.1</version>
     </parent>
 
     <groupId>se.internetapplications</groupId>
