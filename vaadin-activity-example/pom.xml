@@ -10,7 +10,6 @@
 
     <groupId>se.internetapplications</groupId>
     <artifactId>vaadin-navigation-example</artifactId>
-    <version>2.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Vaadin Navigation Addon Example</name>
 
