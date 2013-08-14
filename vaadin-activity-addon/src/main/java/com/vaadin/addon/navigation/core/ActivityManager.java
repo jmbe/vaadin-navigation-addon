@@ -1,10 +1,5 @@
 package com.vaadin.addon.navigation.core;
 
-import java.util.Iterator;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.vaadin.addon.navigation.activity.Activity;
@@ -27,7 +22,12 @@ import com.vaadin.ui.UriFragmentUtility.FragmentChangedListener;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
-import edu.umd.cs.findbugs.annotations.Nullable;
+import java.util.Iterator;
+
+import javax.annotation.Nullable;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ActivityManager extends CustomComponent implements FragmentChangedListener, PlaceController {
 
