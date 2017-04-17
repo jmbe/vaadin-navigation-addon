@@ -41,4 +41,21 @@
         </pluginManagement>
     </build>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>se.internetapplications</groupId>
+                <artifactId>vaadin-navigation-addon</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>se.internetapplications</groupId>
+                <artifactId>vaadin-navigation-example</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>
