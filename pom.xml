@@ -12,7 +12,7 @@
     <artifactId>vaadin-navigation-addon-parent</artifactId>
     <packaging>pom</packaging>
     <name>Vaadin Navigation Addon</name>
-    <version>17.04.0</version>
+    <version>17.05.0-SNAPSHOT</version>
 
     <modules>
         <module>vaadin-activity-addon</module>
