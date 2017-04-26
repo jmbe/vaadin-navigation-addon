@@ -3,7 +3,7 @@
              xsi:schemaLocation="http://www.zeroturnaround.com http://update.zeroturnaround.com/jrebel/rebel-2_1.xsd">
 
     <classpath>
-        <dir name="${vaadin.navigation.addon.root}/vaadin-navigation-addon/target/classes" />
+        <dir name="${vaadin.navigation.addon.root}/vaadin-activity-addon/target/classes" />
     </classpath>
 
 </application>
