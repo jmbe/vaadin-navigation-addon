@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>se.internetapplications</groupId>
-        <artifactId>internetapplications-parent</artifactId>
-        <version>13.8.0</version>
+        <groupId>se.pictosys</groupId>
+        <artifactId>pictosys-top-pom</artifactId>
+        <version>18.04</version>
+        <relativePath />
     </parent>
 
+    <groupId>se.internetapplications</groupId>
     <artifactId>vaadin-navigation-addon-parent</artifactId>
     <packaging>pom</packaging>
     <name>Vaadin Navigation Addon</name>
-    <version>17.04.0</version>
+    <version>18.05</version>
 
     <modules>
         <module>vaadin-activity-addon</module>
@@ -23,9 +26,9 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>external.atlassian.jgitflow</groupId>
-                    <artifactId>jgitflow-maven-plugin</artifactId>
-                    <version>1.0-m5.1</version>
+                    <groupId>com.amashchenko.maven.plugin</groupId>
+                    <artifactId>gitflow-maven-plugin</artifactId>
+                    <version>1.9.0</version>
                     <configuration>
                         <scmCommentPrefix xml:space="preserve"><![CDATA[[jgitflow] ]]></scmCommentPrefix>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
