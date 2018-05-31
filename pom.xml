@@ -26,9 +26,9 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>external.atlassian.jgitflow</groupId>
-                    <artifactId>jgitflow-maven-plugin</artifactId>
-                    <version>1.0-m5.1</version>
+                    <groupId>com.amashchenko.maven.plugin</groupId>
+                    <artifactId>gitflow-maven-plugin</artifactId>
+                    <version>1.9.0</version>
                     <configuration>
                         <scmCommentPrefix xml:space="preserve"><![CDATA[[jgitflow] ]]></scmCommentPrefix>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
